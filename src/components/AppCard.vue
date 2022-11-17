@@ -41,4 +41,12 @@ img {
   background-color: $primary-color;
   color: white;
 }
+
+.card {
+  cursor: pointer;
+  transition: all 0.4s;
+  &:hover {
+    transform: scale(1.08);
+  }
+}
 </style>
