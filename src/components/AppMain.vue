@@ -31,7 +31,6 @@ export default {
   },
   mounted() {
     this.getData();
-    this.fixNoImg();
   },
 };
 </script>
@@ -43,10 +42,11 @@ export default {
         <select
           class="form-select w-25 mb-5"
           aria-label="Default select example"
+          v-model="store.selectedCategory"
         >
-          <option value="1">BrBa World</option>
-          <option value="2">Breaking Bad</option>
-          <option value="3">Better Call Saul</option>
+          <option value="Breaking Bad">Breaking Bad</option>
+          <option value="Better Call Saul">Better Call Saul</option>
+          <option value="Breaking Bad, Better Call Saul">BrBa & BCS</option>
         </select>
       </div>
 
@@ -55,6 +55,7 @@ export default {
           class="col-4"
           v-for="(character, index) in store.bbData"
           :key="index"
+          v-show="character.category === store.selectedCategory"
         >
           <AppCard :characterData="character" />
         </div>

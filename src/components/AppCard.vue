@@ -9,7 +9,12 @@ export default {
 
 <template>
   <div class="card mb-4" style="width: 18rem">
-    <img :src="characterData.img" class="card-img-top" alt="" />
+    <img
+      :src="characterData.img"
+      class="card-img-top"
+      alt=""
+      onerror="this.src='/brbalogo.svg'"
+    />
     <div class="card-body">
       <h5 class="card-title text-center fw-bold py-3 fs-4">
         {{ characterData.name }}
