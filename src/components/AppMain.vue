@@ -39,20 +39,27 @@ export default {
   <main>
     <div class="container">
       <div class="row">
-        <select
-          class="form-select w-25 mb-5"
-          aria-label="Default select example"
-          v-model="store.selectedCategory"
-        >
-          <option value="Breaking Bad">Breaking Bad</option>
-          <option value="Better Call Saul">Better Call Saul</option>
-          <option value="Breaking Bad, Better Call Saul">BrBa & BCS</option>
-        </select>
+        <div class="col-6">
+          <select
+            class="form-select w-25 mb-5"
+            aria-label="Default select example"
+            v-model="store.selectedCategory"
+          >
+            <option value="Breaking Bad">Breaking Bad</option>
+            <option value="Better Call Saul">Better Call Saul</option>
+            <option value="Breaking Bad, Better Call Saul">BrBa & BCS</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <p class="fs-4 text-white text-center">
+            Found {{ store.bbData.length }} characters.
+          </p>
+        </div>
       </div>
 
       <div class="row mt-5" v-if="store.isLoad">
         <div
-          class="col-4"
+          class="col-4 mb-3"
           v-for="(character, index) in store.bbData"
           :key="index"
           v-show="character.category === store.selectedCategory"
@@ -66,10 +73,18 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../style/partials/var" as *;
 .load-container {
   min-width: 100vh;
   margin: 50px auto;
   display: flex;
   justify-content: center;
+}
+
+.container {
+  p {
+    background-color: $primary-color;
+    border-radius: 10px;
+  }
 }
 </style>

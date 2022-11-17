@@ -11,13 +11,13 @@ export default {
     <div></div>
     <div></div>
   </div>
-  <h1 class="ms-2">LOADING...</h1>
+  <h2 class="ms-2">LOADING...</h2>
 </template>
 
 <style lang="scss" scoped>
 @use "../style/partials/var" as *;
 
-h1 {
+h2 {
   color: $primary-color;
   font-size: 3.5rem;
 }
