@@ -17,22 +17,22 @@ export default {
   },
   methods: {
     getData() {
+      store.selectedCategory = "";
+      store.default = true;
       store.isLoad = false;
       axios
         .get(store.apiUrl)
         .then((result) => {
           store.bbData = result.data;
           store.isLoad = true;
-          const firstFilter = store.bbData.filter(
-            (data) => data.category === store.selectedCategory
-          );
-          store.counter = firstFilter.length;
+          store.counter = store.bbData.length;
         })
         .catch((error) => {
           console.log("ERROR!");
         });
     },
     getCounter() {
+      store.default = false;
       const result = store.bbData.filter(
         (data) => data.category === store.selectedCategory
       );
@@ -55,6 +55,7 @@ export default {
             aria-label="Default select example"
             v-model="store.selectedCategory"
           >
+            <option value="" selected disabled>Select TV Series</option>
             <option value="Breaking Bad" @click="getCounter()">
               Breaking Bad
             </option>
@@ -87,7 +88,9 @@ export default {
           class="col-4 mb-5"
           v-for="(character, index) in store.bbData"
           :key="index"
-          v-show="character.category === store.selectedCategory"
+          v-show="
+            store.default || character.category === store.selectedCategory
+          "
         >
           <AppCard :characterData="character" />
         </div>
