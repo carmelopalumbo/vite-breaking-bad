@@ -4,6 +4,8 @@ export default {
 };
 </script>
 
-<template></template>
+<template>
+  <div class="container">MAIN</div>
+</template>
 
 <style></style>
