@@ -25,6 +25,9 @@ export default {
       <p class="card-text">
         Status: <strong>{{ characterData.status }}</strong>
       </p>
+      <p class="card-text">
+        Actor: <strong>{{ characterData.portrayed }}</strong>
+      </p>
     </div>
   </div>
 </template>
