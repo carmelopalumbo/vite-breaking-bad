@@ -55,6 +55,12 @@ export default {
             Found {{ store.bbData.length }} characters.
           </p>
         </div>
+
+        <div class="col-3">
+          <button type="button" class="btn btn-success" @click="getData()">
+            RELOAD
+          </button>
+        </div>
       </div>
 
       <div class="row mt-5" v-if="store.isLoad">
@@ -85,6 +91,14 @@ export default {
   p {
     background-color: $primary-color;
     border-radius: 10px;
+  }
+  button {
+    background-color: $primary-color;
+    border: none;
+    transition: all 0.4s;
+    &:hover {
+      background-color: darken($primary-color, 6%);
+    }
   }
 }
 </style>
