@@ -1,9 +1,13 @@
 <script>
 import axios from "axios";
+import AppCard from "./AppCard.vue";
 import { store } from "../data/store.js";
 
 export default {
   name: "AppMain",
+  components: {
+    AppCard,
+  },
   data() {
     return {
       store,
@@ -23,6 +27,7 @@ export default {
   },
   mounted() {
     this.getData();
+    this.fixNoImg();
   },
 };
 </script>
@@ -38,7 +43,15 @@ export default {
         </select>
       </div>
 
-      <div class="row mt-5"></div>
+      <div class="row mt-5">
+        <div
+          class="col-4"
+          v-for="(character, index) in store.bbData"
+          :key="index"
+        >
+          <AppCard :characterData="character" />
+        </div>
+      </div>
     </div>
   </main>
 </template>
