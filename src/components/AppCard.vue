@@ -37,7 +37,6 @@ export default {
 img {
   height: 400px;
   object-fit: cover;
-  object-position: top;
 }
 
 .card-body {
