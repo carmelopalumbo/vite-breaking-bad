@@ -23,10 +23,20 @@ export default {
         .then((result) => {
           store.bbData = result.data;
           store.isLoad = true;
+          const firstFilter = store.bbData.filter(
+            (data) => data.category === store.selectedCategory
+          );
+          store.counter = firstFilter.length;
         })
         .catch((error) => {
           console.log("ERROR!");
         });
+    },
+    getCounter() {
+      const result = store.bbData.filter(
+        (data) => data.category === store.selectedCategory
+      );
+      store.counter = result.length;
     },
   },
   mounted() {
@@ -45,14 +55,23 @@ export default {
             aria-label="Default select example"
             v-model="store.selectedCategory"
           >
-            <option value="Breaking Bad">Breaking Bad</option>
-            <option value="Better Call Saul">Better Call Saul</option>
-            <option value="Breaking Bad, Better Call Saul">BrBa & BCS</option>
+            <option value="Breaking Bad" @click="getCounter()">
+              Breaking Bad
+            </option>
+            <option value="Better Call Saul" @click="getCounter()">
+              Better Call Saul
+            </option>
+            <option
+              value="Breaking Bad, Better Call Saul"
+              @click="getCounter()"
+            >
+              BrBa & BCS
+            </option>
           </select>
         </div>
         <div class="col-3">
           <p class="fs-4 text-white text-center">
-            Found {{ store.bbData.length }} characters.
+            Found {{ store.counter }} characters.
           </p>
         </div>
 
