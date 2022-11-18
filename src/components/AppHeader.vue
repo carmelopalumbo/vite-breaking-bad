@@ -27,7 +27,7 @@ export default {
       </div>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6 offset-lg-1 col-md-9">
           <select
             class="form-select w-25 mb-5"
             aria-label="Default select example"
@@ -44,13 +44,13 @@ export default {
             </option>
           </select>
         </div>
-        <div class="col-3">
+        <div class="col-lg-3 col-md-4">
           <p class="fs-4 text-white text-center">
             Found {{ getOutputCounter }} characters.
           </p>
         </div>
 
-        <div class="col-3">
+        <div class="col-lg-2 col-md-1">
           <button
             type="button"
             class="btn btn-success"

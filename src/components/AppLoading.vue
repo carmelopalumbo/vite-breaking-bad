@@ -5,13 +5,15 @@ export default {
 </script>
 
 <template>
-  <div class="lds-ring">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="container d-flex justify-content-center">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h2>LOADING...</h2>
   </div>
-  <h2 class="ms-2">LOADING...</h2>
 </template>
 
 <style lang="scss" scoped>
