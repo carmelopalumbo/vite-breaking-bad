@@ -19,11 +19,13 @@ export default {
   },
   methods: {
     getData() {
-      store.selectedCategory = "";
-      store.default = true;
       store.isLoad = false;
       axios
-        .get(store.apiUrl)
+        .get(store.apiUrl, {
+          params: {
+            category: store.selectSeries,
+          },
+        })
         .then((result) => {
           store.bbData = result.data;
           store.isLoad = true;
@@ -31,6 +33,10 @@ export default {
         .catch((error) => {
           console.log("ERROR!");
         });
+    },
+    reset() {
+      store.selectSeries = "";
+      this.getData();
     },
   },
   mounted() {
@@ -41,7 +47,7 @@ export default {
 
 <template>
   <div class="container">
-    <AppHeader @getDataEvent="getData()" />
+    <AppHeader @getDataEvent="getData()" @getResetEvent="reset()" />
     <AppMain />
     <AppFooter />
   </div>

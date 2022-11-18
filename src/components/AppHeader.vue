@@ -26,25 +26,28 @@ export default {
           <select
             class="form-select w-25 mb-5"
             aria-label="Default select example"
-            v-model="store.selectedCategory"
+            v-model="store.selectSeries"
           >
-            <option value="" selected disabled>Select TV Series</option>
-            <option value="Breaking Bad">Breaking Bad</option>
-            <option value="Better Call Saul">Better Call Saul</option>
-            <option value="Breaking Bad, Better Call Saul">BrBa & BCS</option>
+            <option value="" selected @click="$emit('getDataEvent')">
+              BrBa World
+            </option>
+            <option value="Breaking Bad" @click="$emit('getDataEvent')">
+              Breaking Bad
+            </option>
+            <option value="Better Call Saul" @click="$emit('getDataEvent')">
+              Better Call Saul
+            </option>
           </select>
         </div>
         <div class="col-3">
-          <p class="fs-4 text-white text-center">
-            Found {{ store.bbData.length }} characters.
-          </p>
+          <p class="fs-4 text-white text-center">Found 0 characters.</p>
         </div>
 
         <div class="col-3">
           <button
             type="button"
             class="btn btn-success"
-            @click="$emit('getDataEvent')"
+            @click="$emit('getResetEvent')"
           >
             RELOAD
           </button>
@@ -64,6 +67,7 @@ header {
     p {
       background-color: $primary-color;
       border-radius: 10px;
+      color: white;
     }
     button {
       background-color: $primary-color;
