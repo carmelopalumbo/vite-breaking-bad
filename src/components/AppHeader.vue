@@ -8,6 +8,11 @@ export default {
       store,
     };
   },
+  computed: {
+    getOutputCounter() {
+      return store.bbData.length;
+    },
+  },
 };
 </script>
 
@@ -40,7 +45,9 @@ export default {
           </select>
         </div>
         <div class="col-3">
-          <p class="fs-4 text-white text-center">Found 0 characters.</p>
+          <p class="fs-4 text-white text-center">
+            Found {{ getOutputCounter }} characters.
+          </p>
         </div>
 
         <div class="col-3">
