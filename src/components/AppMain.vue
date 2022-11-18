@@ -85,7 +85,7 @@ export default {
 
       <div class="row mt-5" v-if="store.isLoad">
         <div
-          class="col-lg-4 col-md-6 col-sm-12 mb-5 d-flex flex-wrap justify-content-center"
+          class="col-lg-4 col-md-6 col-sm-12 mb-5"
           v-for="(character, index) in store.bbData"
           :key="index"
           v-show="
