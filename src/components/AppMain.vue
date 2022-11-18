@@ -15,66 +15,12 @@ export default {
       store,
     };
   },
-  methods: {
-    getData() {
-      store.selectedCategory = "";
-      store.default = true;
-      store.isLoad = false;
-      axios
-        .get(store.apiUrl)
-        .then((result) => {
-          store.bbData = result.data;
-          store.isLoad = true;
-        })
-        .catch((error) => {
-          console.log("ERROR!");
-        });
-    },
-  },
-  mounted() {
-    this.getData();
-  },
 };
 </script>
 
 <template>
   <main>
     <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <select
-            class="form-select w-25 mb-5"
-            aria-label="Default select example"
-            v-model="store.selectedCategory"
-          >
-            <option value="" selected disabled>Select TV Series</option>
-            <option value="Breaking Bad" @click="getCounter()">
-              Breaking Bad
-            </option>
-            <option value="Better Call Saul" @click="getCounter()">
-              Better Call Saul
-            </option>
-            <option
-              value="Breaking Bad, Better Call Saul"
-              @click="getCounter()"
-            >
-              BrBa & BCS
-            </option>
-          </select>
-        </div>
-        <div class="col-3">
-          <p class="fs-4 text-white text-center">
-            Found {{ store.bbData.length }} characters.
-          </p>
-        </div>
-
-        <div class="col-3">
-          <button type="button" class="btn btn-success" @click="getData()">
-            RELOAD
-          </button>
-        </div>
-      </div>
-
       <div class="row mt-5" v-if="store.isLoad">
         <div
           class="col-lg-4 col-md-6 col-sm-12 mb-5"
@@ -96,20 +42,5 @@ export default {
   margin: 50px auto;
   display: flex;
   justify-content: center;
-}
-
-.container {
-  p {
-    background-color: $primary-color;
-    border-radius: 10px;
-  }
-  button {
-    background-color: $primary-color;
-    border: none;
-    transition: all 0.4s;
-    &:hover {
-      background-color: darken($primary-color, 6%);
-    }
-  }
 }
 </style>
