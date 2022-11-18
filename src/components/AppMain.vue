@@ -25,18 +25,10 @@ export default {
         .then((result) => {
           store.bbData = result.data;
           store.isLoad = true;
-          store.counter = store.bbData.length;
         })
         .catch((error) => {
           console.log("ERROR!");
         });
-    },
-    getCounter() {
-      store.default = false;
-      const result = store.bbData.filter(
-        (data) => data.category === store.selectedCategory
-      );
-      store.counter = result.length;
     },
   },
   mounted() {
@@ -72,7 +64,7 @@ export default {
         </div>
         <div class="col-3">
           <p class="fs-4 text-white text-center">
-            Found {{ store.counter }} characters.
+            Found {{ store.bbData.length }} characters.
           </p>
         </div>
 
@@ -88,9 +80,6 @@ export default {
           class="col-lg-4 col-md-6 col-sm-12 mb-5"
           v-for="(character, index) in store.bbData"
           :key="index"
-          v-show="
-            store.default || character.category === store.selectedCategory
-          "
         >
           <AppCard :characterData="character" />
         </div>
